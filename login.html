@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // const name = document.querySelector('.name').textContent
+        // const email = document.querySelector('.email').textContent
+        // name = true
+        // email = true
+        function move() {
+            let tname = document.querySelector('.name').textContent
+            let temail = document.querySelector('.email').textContent
+            if (tname.length == '') {
+                document.querySelector('.btn').
+                    style.background='red'
+                     ':hover {position: relative left: 40px right: 0 top: 0 bottom: 0 }'
+            }
+            else if (temail.length == '') {
+                document.querySelector('.btn'). 
+                style = ' :hover {position: relative left: 40px right: 0 top: 0 bottom: 0} '
+            }
+        }
+        const observer = new IntersectionObserver((entries) => {
+  for (const entry of entries) {
+    const intersecting = entry.isIntersecting;
+    entry.target.style.backgroundColor = intersecting ? 'blue' : 'orange';
+  }
+});
+const box = document.getElementsByClassName('box');
+observer.observe(box);
+    </script>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        main {
+            
+            display: fle;
+            width: 100vw;
+            background-color: aquamarine;
+            height: 100vh;
+        }
+
+        .sect {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn {
+            width: 90px;
+            height: 20px;
+        }
+
+        .btn:hover {
+            background-color: rgb(21, 77, 15);
+            color: white;
+            border: none;}    </style>
+</head>
+
+<body>
+    <main class="box">
+        <form action="https://httpbin.org/get" method="get">
+            <fieldset class="contact__fld">
+                <p>
+                    <legend>send us a message</legend>
+                    <label class="contact__lab" for="name">Name:</label>
+                    <input class="name" type="text" id="name" placeholder="enter your name" required><br>
+                </p>
+                <label class="contact__lab" for="email">email:</label>
+                <input class="email" type="text" id="email" placeholder="enter your email" required> <br></p>
+                <section class="sect">
+                    <button class="btn" type="submit" onmousemove="move()">login</button>
+                </section>
+        </form>
+    </main>
+</body>
+
+</html>

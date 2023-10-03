@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        //
+        let score = 0;
+        let highScore=0;
+        function goBack() {
+            document.getElementById('finished').style = 'visibility:hidden'
+            document.getElementsByClassName('score')[0].innerHTML = ''
+            document.getElementById('input-number').value = ''
+            document.getElementsByClassName('success')[0].innerHTML = ''
+            document.getElementsByClassName('result')[0].innerHTML = ''
+
+        }
+//console.log(document.querySelector('.score').textContent=20);
+
+        function submit() {
+            let value = Math.random() * 10
+            let round = Math.round(value)
+            let inputElement = document.querySelector('#input-number')
+            let inputValue = inputElement.value
+            document.getElementsByClassName('result')[0].innerHTML = round
+            if (inputValue.length == 0) {
+                document.getElementsByClassName('failer')[0].innerHTML = 'insert a number'
+                inputElement.style = 'border:solid 2px red'
+            }
+            
+            
+           else  if (inputValue > 10) {
+    alert('too high enter another number')
+    //document.getElementsByClassName('failer')[0].innerHTML = 'too high enter another number'
+    inputElement.style = 'border:solid 2px red'}
+            
+            
+            else if (round == inputValue) {
+                score = score + 5
+                inputElement.style = 'border:gray 0.5px solid'
+                document.getElementsByClassName('success')[0].innerHTML = 'correct!'
+                document.getElementsByClassName('failer')[0].innerHTML = ''
+                if(score>highScore){
+                    highScore=score
+                }
+                document.querySelector('.highScore').textContent = highScore;
+            } else {
+                if (score - 1 < 0 ) {
+                    score = 0
+                } else {
+                    score = score - 1
+                }
+
+                inputElement.style = 'border:gray 0.5px solid'
+                document.getElementsByClassName('failer')[0].innerHTML = 'Failed'
+                document.getElementsByClassName('success')[0].innerHTML = ''
+            }
+
+            if (highScore >=15) {
+                document.getElementById('finished').style = 'visibility:visible'
+            }
+        
+            else if (score)
+                document.querySelector('.score').textContent = score
+        }
+
+        // document.scripts.submit()
+    </script>
+    <style>
+        .score {
+            color: black;
+            font-size: 35px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        section {
+            background-color: rgba(195, 243, 243, 0.76);
+            border: rgb(184, 184, 184) 1px solid;
+            padding: 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(255, 6, 6, 0.411);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+
+
+        #input-number {
+            height: 2rem;
+            border-radius: 0.4rem;
+            background-color: rgb(240, 240, 240);
+            border: gray 0.5px solid;
+            text-align: center;
+
+        }
+
+        #input-number:focus {
+            background-color: rgba(126, 255, 126, 0.445);
+        }
+
+        button {
+            background-color: rgb(117, 226, 117);
+            height: 2rem;
+            color: white;
+            font-weight: bold;
+            border: none;
+            border-radius: 20px;
+            box-shadow: 1px 1px 4px rgba(66, 66, 66, 0.8);
+            cursor: pointer;
+            margin-top: 1rem;
+            font-size: 1rem;
+            
+        }
+
+        button:hover {
+            background-color: rgb(90, 175, 90);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        button:active {
+            background-color: royalblue;
+        }
+
+        .failer {
+            color: red;
+            font-size: 2rem;
+            font-weight: bold;
+          
+
+            text-align: center;
+
+        }
+
+        .success {
+            color: green;
+            font-size: 2rem;
+            font-weight: 500;
+            margin-bottom: -2rem;
+            margin-top: -2rem;
+        }
+
+        .result {
+           
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 2rem;
+            
+        }
+
+        .finished {
+            visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            text-transform: capitalize;
+            font-size: 3rem;
+            gap: 2rem;
+            background-color: rgba(99, 92, 92, 0.726);
+            height: 100%;
+            width: 100%;
+        }
+
+        .finished button {
+            width: 200px;
+            height: 50px;
+
+        }
+    </style>
+</head>
+
+<body >
+    <section>
+        <h1>Guessing game</h1>
+        <p style="margin: 0; padding: 0; text-align: left; font-size: 30px; font-weight: bold; 
+        font-family: Arial, Helvetica, sans-serif; 
+        color: green;">score :  <span class="score"></span></p>
+        <input type="number" placeholder="Enter a number" max="10" min="0" name="" 
+        id="input-number" />
+        <button id="submit" type="submit" onclick="submit()"> check</button>
+
+        <h1 class="result"> </h1>
+        <div class="success">
+            <!-- Successful -->
+        </div>
+        <div class="failer">
+            <!-- Failed -->
+        </div>
+        <p style="margin-top: -5rem; margin-top:1rem; padding: 0; text-align: left; font-size: 30px; font-weight: bold; 
+        font-family: Arial, Helvetica, sans-serif;color: green;" >High score: <span class="highScore"></span></p>
+    </section>
+    <div class="finished" id="finished">
+        <div class="score"></div><span class="edit">
+        finished! <br>
+        start again</span>
+        <button id="again" onclick="goBack()">Again</button>
+
+    </div>
+</body>
+
+</html>

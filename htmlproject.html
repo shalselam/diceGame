@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>modal windows</title>
+
+    <style>
+        body {
+            background-color: rgb(99, 161, 99);
+        }
+
+        .all-button {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+
+        .button-1 {
+            padding: 1rem;
+            width: 200px;
+            font-weight: bold;
+            border-radius: 2rem;
+            margin: 1rem;
+            margin-top: 2rem;
+            font-size: 1rem;
+            border: none;
+        }
+
+        .button-1:hover {
+            background-color: rgb(177, 185, 177);
+            font-weight: bolder;
+            font-size: 1rem;
+        }
+
+        .button-1:active {
+            background-color: rgb(5, 101, 114);
+            color: white;
+        }
+
+        .hidden {
+            visibility: hidden
+        }
+
+        .back {
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.527);
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            align-items: center;
+        }
+
+        .model {
+            width: 450px;
+            height: max-content;
+            padding: 0.5rem;
+            margin-left: 2rem;
+            position: relative;
+            background-color: white;
+            box-shadow: 0 0 20px black;
+
+        }
+
+        .close-model {
+            display: flex;
+            position: absolute;
+            right: 0;
+            padding: 0.5rem;
+            background-color: white;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1.7rem;
+            margin-top: -0.1rem;
+        }
+
+
+        .close-model:hover{
+            color:white;
+            background-color:brown;
+        }
+        h2 {
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.rem;
+            line-height: 1.3rem;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            vertical-align: middle;
+            text-align: center;
+            
+        }
+    </style>
+
+</head>
+
+<body>
+    <section class="all-button">
+        <button class="button-1" onclick="addd()">show modal 1</button>
+        <button class="button-1">show modal 2</button>
+        <button class="button-1">show modal 3</button>
+    </section>
+    <section class="back hidden">
+
+
+        <div class=" model ">
+            <button class="close-model" onclick="back()">&times;</button>
+            <h2>The model window &#128540;</h2>
+            <p>
+                Any experience on a website is like a mosaic of smaller idesign <br>
+                elements nd s decisions.
+                Here’s one you’ve likely encountered: <br> You’re not browsing a site, and click some button.
+                Immediately <br> the page fades and a popup appears on your screen displaying <br>
+                some messagor prompting an action,hughfyff gryeob fuuto8tr <br> like signingup for
+                an email list or downloading a content offer.
+            </p>
+        </div>
+    </section>
+    <div class="overLay hidden"></div>
+</body>
+<script src="jsproject.js"></script>
+
+</html>
